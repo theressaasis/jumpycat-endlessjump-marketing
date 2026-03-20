@@ -12,18 +12,14 @@
     :root {
       --bg: #252342;
       --bg-2: #2d2950;
-      --card: rgba(255, 255, 255, 0.04);
+      --card: rgba(255, 255, 255, 0.05);
       --card-border: rgba(255, 255, 255, 0.08);
       --text: #f7f1ff;
-      --muted: #c2b9da;
+      --muted: #c8bfdc;
       --pink: #ff78c8;
-      --pink-2: #ff9ad7;
       --yellow: #f6e27a;
       --button-pink: #e975b2;
       --button-yellow: #efd864;
-      --shadow-pink: 0 0 18px rgba(255, 120, 200, 0.45);
-      --shadow-yellow: 0 0 18px rgba(246, 226, 122, 0.35);
-      --radius: 24px;
       --max: 1140px;
     }
 
@@ -41,7 +37,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top center, rgba(80, 70, 140, 0.32), transparent 35%),
+        radial-gradient(circle at top center, rgba(80, 70, 140, 0.35), transparent 35%),
         linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
       line-height: 1.6;
     }
@@ -83,35 +79,14 @@
     }
 
     .logo-block img {
-      width: 180px;
+      width: 190px;
       max-width: 100%;
       display: block;
     }
 
-    .logo-fallback {
-      font-weight: 900;
-      font-size: 54px;
-      line-height: 0.9;
-      letter-spacing: -0.05em;
-      display: inline-block;
-    }
-
-    .logo-fallback .jumpy {
-      display: block;
-      color: var(--yellow);
-      text-shadow: var(--shadow-yellow);
-      font-size: 34px;
-    }
-
-    .logo-fallback .cat {
-      display: block;
-      color: var(--pink);
-      text-shadow: var(--shadow-pink);
-    }
-
     h1 {
       margin: 0 0 12px;
-      font-size: clamp(44px, 7vw, 78px);
+      font-size: clamp(42px, 7vw, 76px);
       line-height: 0.95;
       letter-spacing: -0.05em;
     }
@@ -121,7 +96,6 @@
       color: var(--yellow);
       font-weight: 700;
       margin: 0 0 14px;
-      text-shadow: var(--shadow-yellow);
     }
 
     .description {
@@ -157,7 +131,7 @@
 
     .btn-primary {
       background: var(--button-pink);
-      color: #1d1733;
+      color: #201933;
       box-shadow: 0 12px 28px rgba(233, 117, 178, 0.28);
     }
 
@@ -185,7 +159,7 @@
     .stat strong {
       display: block;
       margin-bottom: 8px;
-      color: var(--pink-2);
+      color: var(--pink);
       font-size: 15px;
     }
 
@@ -209,187 +183,19 @@
       aspect-ratio: 9 / 19.5;
       border-radius: 24px;
       overflow: hidden;
-      position: relative;
-      background:
-        radial-gradient(circle at 50% 36%, rgba(133, 103, 255, 0.16), transparent 24%),
-        linear-gradient(180deg, #2a274a 0%, #252342 100%);
       border: 1px solid rgba(255,255,255,0.08);
+      background: #1f1c35;
     }
 
-    .grid-lines {
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(
-        to bottom,
-        rgba(255, 140, 220, 0.10),
-        rgba(255, 140, 220, 0.10) 1px,
-        transparent 1px,
-        transparent 8px
-      );
-      opacity: 0.55;
-      pointer-events: none;
-    }
-
-    .screen-header {
-      position: absolute;
-      top: 16px;
-      left: 18px;
-      right: 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      z-index: 2;
-    }
-
-    .mini-logo {
-      font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: -0.05em;
-    }
-
-    .mini-logo .jumpy {
+    .game-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      font-size: 18px;
-      color: var(--yellow);
-      text-shadow: var(--shadow-yellow);
-    }
-
-    .mini-logo .cat {
-      display: block;
-      font-size: 30px;
-      color: var(--pink);
-      text-shadow: var(--shadow-pink);
-    }
-
-    .screen-icons {
-      color: #d7d0ea;
-      font-size: 20px;
-      display: flex;
-      gap: 12px;
-    }
-
-    .glow-ring {
-      position: absolute;
-      left: 50%;
-      top: 38%;
-      width: 230px;
-      height: 230px;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      border: 2px solid rgba(140, 136, 255, 0.14);
-      box-shadow:
-        0 0 0 24px rgba(140, 136, 255, 0.05),
-        0 0 0 48px rgba(140, 136, 255, 0.03);
-    }
-
-    .cat {
-      position: absolute;
-      left: 50%;
-      top: 37%;
-      transform: translate(-50%, -50%);
-      font-size: 98px;
-      z-index: 2;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.28));
-    }
-
-    .platform {
-      position: absolute;
-      left: 50%;
-      top: 46%;
-      transform: translateX(-50%);
-      width: 210px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(255, 163, 205, 0.72);
-      box-shadow: 0 0 24px rgba(255, 120, 200, 0.18);
-    }
-
-    .platform::after {
-      content: "";
-      position: absolute;
-      inset: 6px 14px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.16);
-    }
-
-    .screen-bottom {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
-      text-align: center;
-    }
-
-    .screen-bottom .game-title {
-      font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: -0.05em;
-      margin-bottom: 14px;
-    }
-
-    .screen-bottom .game-title .jumpy {
-      display: block;
-      font-size: 24px;
-      color: var(--yellow);
-      text-shadow: var(--shadow-yellow);
-    }
-
-    .screen-bottom .game-title .cat {
-      display: block;
-      font-size: 40px;
-      color: var(--pink);
-      text-shadow: var(--shadow-pink);
-    }
-
-    .screen-bottom p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .mini-controls {
-      display: inline-flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-
-    .pill {
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 12px;
-      color: var(--text);
-    }
-
-    .mini-buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .mini-start {
-      background: var(--button-pink);
-      color: #1d1733;
-      border-radius: 16px;
-      padding: 12px 18px;
-      font-weight: 800;
-      min-width: 170px;
-    }
-
-    .mini-shop {
-      background: var(--button-yellow);
-      color: #2d2440;
-      border-radius: 16px;
-      padding: 12px 16px;
-      font-weight: 800;
     }
 
     .section {
-      padding: 22px 0 20px;
+      padding: 24px 0 20px;
     }
 
     .section h2 {
@@ -455,7 +261,7 @@
       }
 
       .logo-block img {
-        width: 150px;
+        width: 160px;
       }
     }
   </style>
@@ -467,13 +273,7 @@
         <div class="eyebrow">Casual Game • Endless Jumping Adventure</div>
 
         <div class="logo-block">
-          <!-- Replace logo.png with your real exported logo file -->
-          <!-- Example: <img src="logo.png" alt="Jumpy Cat logo" /> -->
-
-          <div class="logo-fallback" aria-label="Jumpy Cat logo">
-            <span class="jumpy">JUMPY</span>
-            <span class="cat">CAT</span>
-          </div>
+          <img src="logo.png" alt="Jumpy Cat logo" />
         </div>
 
         <h1>Jump into a cute little arcade world</h1>
@@ -507,40 +307,7 @@
 
       <div class="phone-shell">
         <div class="phone-screen">
-          <div class="grid-lines"></div>
-
-          <div class="screen-header">
-            <div class="mini-logo">
-              <span class="jumpy">JUMPY</span>
-              <span class="cat">CAT</span>
-            </div>
-            <div class="screen-icons">
-              <span>🔊</span>
-              <span>🛍️</span>
-            </div>
-          </div>
-
-          <div class="glow-ring"></div>
-          <div class="cat">🐱</div>
-          <div class="platform"></div>
-
-          <div class="screen-bottom">
-            <div class="game-title">
-              <span class="jumpy">JUMPY</span>
-              <span class="cat">CAT</span>
-            </div>
-            <p>Climb forever. Eat tuna. Dodge hazards. Climb high.</p>
-
-            <div class="mini-controls">
-              <span class="pill">POUNCE • Tap</span>
-              <span class="pill">MOVE • Swipe</span>
-            </div>
-
-            <div class="mini-buttons">
-              <div class="mini-start">▶ Start Climbing</div>
-              <div class="mini-shop">🛍 Shop</div>
-            </div>
-          </div>
+          <img src="screenshot.png" alt="Jumpy Cat gameplay screenshot" class="game-image" />
         </div>
       </div>
     </section>
@@ -569,6 +336,7 @@
     <footer class="footer">
       <div class="footer-inner">
         <div>Jumpy Cat is a casual endless jumping game made for quick mobile fun.</div>
+        <div><a href="privacy.html">Privacy Policy</a></div>
       </div>
     </footer>
   </main>
