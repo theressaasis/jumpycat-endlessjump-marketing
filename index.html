@@ -4,99 +4,573 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jumpy Cat</title>
-
+  <meta
+    name="description"
+    content="Jumpy Cat is a playful endless jumping game where timing is everything. Tap to jump, dodge obstacles, and collect treats."
+  />
   <style>
+    :root {
+      --bg: #252342;
+      --bg-2: #2d2950;
+      --card: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f7f1ff;
+      --muted: #c2b9da;
+      --pink: #ff78c8;
+      --pink-2: #ff9ad7;
+      --yellow: #f6e27a;
+      --button-pink: #e975b2;
+      --button-yellow: #efd864;
+      --shadow-pink: 0 0 18px rgba(255, 120, 200, 0.45);
+      --shadow-yellow: 0 0 18px rgba(246, 226, 122, 0.35);
+      --radius: 24px;
+      --max: 1140px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(#fff6ec, #ffd8a8);
-      text-align: center;
-      color: #3b2a1a;
+      padding: 0;
     }
 
-    .container {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top center, rgba(80, 70, 140, 0.32), transparent 35%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+      line-height: 1.6;
     }
 
-    h1 {
-      font-size: 64px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
-
-    .phone {
-      background: white;
-      border-radius: 30px;
-      padding: 20px;
-      display: inline-block;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    }
-
-    .screen {
-      width: 260px;
-      height: 500px;
-      border-radius: 20px;
-      background: linear-gradient(#ffe8c7, #ffb35f);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 80px;
-    }
-
-    .button {
-      margin-top: 30px;
-      display: inline-block;
-      padding: 14px 24px;
-      border-radius: 12px;
-      background: #ff914d;
-      color: white;
-      font-weight: bold;
+    a {
+      color: inherit;
       text-decoration: none;
     }
 
-    .features {
-      margin-top: 50px;
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
     }
 
-    .features div {
-      margin: 10px 0;
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 40px;
+      padding: 48px 0 56px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+
+    .logo-block {
+      margin-bottom: 18px;
+    }
+
+    .logo-block img {
+      width: 180px;
+      max-width: 100%;
+      display: block;
+    }
+
+    .logo-fallback {
+      font-weight: 900;
+      font-size: 54px;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      display: inline-block;
+    }
+
+    .logo-fallback .jumpy {
+      display: block;
+      color: var(--yellow);
+      text-shadow: var(--shadow-yellow);
+      font-size: 34px;
+    }
+
+    .logo-fallback .cat {
+      display: block;
+      color: var(--pink);
+      text-shadow: var(--shadow-pink);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .tagline {
+      font-size: clamp(18px, 2.2vw, 26px);
+      color: var(--yellow);
+      font-weight: 700;
+      margin: 0 0 14px;
+      text-shadow: var(--shadow-yellow);
+    }
+
+    .description {
+      margin: 0 0 28px;
+      max-width: 620px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      min-height: 54px;
+      padding: 14px 20px;
+      border-radius: 18px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .btn-primary {
+      background: var(--button-pink);
+      color: #1d1733;
+      box-shadow: 0 12px 28px rgba(233, 117, 178, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border-color: var(--card-border);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--pink-2);
+      font-size: 15px;
+    }
+
+    .stat p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .phone-shell {
+      width: min(390px, 100%);
+      margin: 0 auto;
+      padding: 14px;
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .phone-screen {
+      aspect-ratio: 9 / 19.5;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 36%, rgba(133, 103, 255, 0.16), transparent 24%),
+        linear-gradient(180deg, #2a274a 0%, #252342 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 140, 220, 0.10),
+        rgba(255, 140, 220, 0.10) 1px,
+        transparent 1px,
+        transparent 8px
+      );
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .screen-header {
+      position: absolute;
+      top: 16px;
+      left: 18px;
+      right: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 2;
+    }
+
+    .mini-logo {
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+    }
+
+    .mini-logo .jumpy {
+      display: block;
+      font-size: 18px;
+      color: var(--yellow);
+      text-shadow: var(--shadow-yellow);
+    }
+
+    .mini-logo .cat {
+      display: block;
+      font-size: 30px;
+      color: var(--pink);
+      text-shadow: var(--shadow-pink);
+    }
+
+    .screen-icons {
+      color: #d7d0ea;
+      font-size: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .glow-ring {
+      position: absolute;
+      left: 50%;
+      top: 38%;
+      width: 230px;
+      height: 230px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 2px solid rgba(140, 136, 255, 0.14);
+      box-shadow:
+        0 0 0 24px rgba(140, 136, 255, 0.05),
+        0 0 0 48px rgba(140, 136, 255, 0.03);
+    }
+
+    .cat {
+      position: absolute;
+      left: 50%;
+      top: 37%;
+      transform: translate(-50%, -50%);
+      font-size: 98px;
+      z-index: 2;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.28));
+    }
+
+    .platform {
+      position: absolute;
+      left: 50%;
+      top: 46%;
+      transform: translateX(-50%);
+      width: 210px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 163, 205, 0.72);
+      box-shadow: 0 0 24px rgba(255, 120, 200, 0.18);
+    }
+
+    .platform::after {
+      content: "";
+      position: absolute;
+      inset: 6px 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .screen-bottom {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      text-align: center;
+    }
+
+    .screen-bottom .game-title {
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      margin-bottom: 14px;
+    }
+
+    .screen-bottom .game-title .jumpy {
+      display: block;
+      font-size: 24px;
+      color: var(--yellow);
+      text-shadow: var(--shadow-yellow);
+    }
+
+    .screen-bottom .game-title .cat {
+      display: block;
+      font-size: 40px;
+      color: var(--pink);
+      text-shadow: var(--shadow-pink);
+    }
+
+    .screen-bottom p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mini-controls {
+      display: inline-flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .pill {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .mini-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mini-start {
+      background: var(--button-pink);
+      color: #1d1733;
+      border-radius: 16px;
+      padding: 12px 18px;
+      font-weight: 800;
+      min-width: 170px;
+    }
+
+    .mini-shop {
+      background: var(--button-yellow);
+      color: #2d2440;
+      border-radius: 16px;
+      padding: 12px 16px;
+      font-weight: 800;
+    }
+
+    .section {
+      padding: 22px 0 20px;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 34px;
+      letter-spacing: -0.04em;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .feature .icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
       font-size: 18px;
     }
 
-    footer {
-      margin-top: 60px;
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .footer {
+      padding: 28px 0 54px;
+      color: var(--muted);
       font-size: 14px;
+    }
+
+    .footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 34px;
+      }
+
+      .stats,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-block img {
+        width: 150px;
+      }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>Jumpy Cat</h1>
-    <p>Tap. Jump. Collect. Repeat.</p>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Casual Game • Endless Jumping Adventure</div>
 
-    <div class="phone">
-      <div class="screen">🐱</div>
-    </div>
+        <div class="logo-block">
+          <!-- Replace logo.png with your real exported logo file -->
+          <!-- Example: <img src="logo.png" alt="Jumpy Cat logo" /> -->
 
-    <div class="features">
-      <div>🎮 Simple tap controls</div>
-      <div>🍪 Collect treats</div>
-      <div>⚡ Endless gameplay</div>
-    </div>
+          <div class="logo-fallback" aria-label="Jumpy Cat logo">
+            <span class="jumpy">JUMPY</span>
+            <span class="cat">CAT</span>
+          </div>
+        </div>
 
-    <a class="button" href="#">Coming Soon on the App Store</a>
+        <h1>Jump into a cute little arcade world</h1>
+        <p class="tagline">Tap. Jump. Collect. Repeat.</p>
+        <p class="description">
+          Jumpy Cat is a playful endless jumping game where timing is everything.
+          Guide an energetic cat, avoid hazards, collect treats, and keep climbing
+          as the rhythm of the game picks up.
+        </p>
 
-    <footer>
-      <br>
-      <a href="https://YOURUSERNAME.github.io/jumpycat-privacy/">Privacy Policy</a>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#">Coming Soon on the App Store</a>
+          <a class="btn btn-secondary" href="privacy.html">Privacy Policy</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>Fast to pick up</strong>
+            <p>Simple controls make it easy to start playing right away on mobile.</p>
+          </div>
+          <div class="stat">
+            <strong>Arcade energy</strong>
+            <p>Quick reactions, playful pacing, and that just-one-more-run feeling.</p>
+          </div>
+          <div class="stat">
+            <strong>Chase treats</strong>
+            <p>Dodge obstacles and keep climbing while trying to beat your best run.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <div class="grid-lines"></div>
+
+          <div class="screen-header">
+            <div class="mini-logo">
+              <span class="jumpy">JUMPY</span>
+              <span class="cat">CAT</span>
+            </div>
+            <div class="screen-icons">
+              <span>🔊</span>
+              <span>🛍️</span>
+            </div>
+          </div>
+
+          <div class="glow-ring"></div>
+          <div class="cat">🐱</div>
+          <div class="platform"></div>
+
+          <div class="screen-bottom">
+            <div class="game-title">
+              <span class="jumpy">JUMPY</span>
+              <span class="cat">CAT</span>
+            </div>
+            <p>Climb forever. Eat tuna. Dodge hazards. Climb high.</p>
+
+            <div class="mini-controls">
+              <span class="pill">POUNCE • Tap</span>
+              <span class="pill">MOVE • Swipe</span>
+            </div>
+
+            <div class="mini-buttons">
+              <div class="mini-start">▶ Start Climbing</div>
+              <div class="mini-shop">🛍 Shop</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Why people will love it</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="icon">🎮</div>
+          <h3>Simple controls</h3>
+          <p>Built around responsive tap and swipe gameplay that feels natural on mobile.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🐾</div>
+          <h3>Cute arcade style</h3>
+          <p>Neon details, playful visuals, and a charming cat character give it personality.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">⚡</div>
+          <h3>Endless replayability</h3>
+          <p>Each run is a chance to go farther, react faster, and improve your score.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>Jumpy Cat is a casual endless jumping game made for quick mobile fun.</div>
+      </div>
     </footer>
-  </div>
+  </main>
 </body>
 </html>
