@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jumpy Cat Support</title>
+  <meta
+    name="description"
+    content="Support page for Jumpy Cat."
+  />
+  <style>
+    :root {
+      --bg: #252342;
+      --bg-2: #2d2950;
+      --card: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f7f1ff;
+      --muted: #c8bfdc;
+      --pink: #ff78c8;
+      --yellow: #f6e27a;
+      --max: 900px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top center, rgba(80, 70, 140, 0.35), transparent 35%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--yellow);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+
+    .logo {
+      margin-bottom: 18px;
+    }
+
+    .logo img {
+      width: 170px;
+      max-width: 100%;
+      display: block;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin: 28px 0 10px;
+      font-size: 22px;
+      color: var(--pink);
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    ul {
+      margin: 0 0 14px 20px;
+      color: var(--muted);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--yellow);
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .links {
+      margin-top: 18px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back-link" href="index.html">← Back to Jumpy Cat</a>
+
+    <div class="logo">
+      <img src="logo.png" alt="Jumpy Cat logo" />
+    </div>
+
+    <div class="eyebrow">Support</div>
+
+    <section class="card">
+      <h1>Jumpy Cat Support</h1>
+      <p>
+        Need help with Jumpy Cat? This page is here to help with common questions,
+        technical issues, and support requests.
+      </p>
+
+      <h2>Contact Support</h2>
+      <p>
+        For support, bug reports, or general questions, contact:
+        <strong>theressaasis@gmail.com</strong>
+      </p>
+
+      <h2>Common Issues</h2>
+      <ul>
+        <li>If the game does not load, check your internet connection and reopen the app.</li>
+        <li>If audio is not playing, make sure your device is not muted and the game sound is turned on.</li>
+        <li>If gameplay feels unresponsive, fully close and reopen the app.</li>
+      </ul>
+
+      <h2>Feedback</h2>
+      <p>
+        We welcome feedback on gameplay, controls, difficulty, and overall experience.
+        Your input helps improve future updates.
+      </p>
+
+      <h2>App Information</h2>
+      <p>
+        Jumpy Cat is a casual endless jumping game designed for quick, fun mobile play.
+      </p>
+
+      <div class="links">
+        <a href="index.html">Marketing Page</a>
+        <a href="https://theressaasis.github.io/jumpycat-endlessjump-privacy/" target="_blank">Privacy Policy</a>
+      </div>
+
+      <div class="footer">
+        Last updated: March 2026
+      </div>
+    </section>
+  </main>
+</body>
+</html>
