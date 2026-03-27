@@ -6,7 +6,7 @@
   <title>Jumpy Cat Support</title>
   <meta
     name="description"
-    content="Support page for Jumpy Cat."
+    content="Support and game guide for Jumpy Cat — controls, zones, bosses, costumes, and more."
   />
   <style>
     :root {
@@ -83,6 +83,7 @@
       border-radius: 24px;
       padding: 28px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+      margin-bottom: 20px;
     }
 
     h1 {
@@ -96,6 +97,16 @@
       margin: 28px 0 10px;
       font-size: 22px;
       color: var(--pink);
+    }
+
+    h2:first-child {
+      margin-top: 0;
+    }
+
+    h3 {
+      margin: 18px 0 6px;
+      font-size: 17px;
+      color: var(--text);
     }
 
     p {
@@ -132,23 +143,106 @@
       gap: 18px;
       flex-wrap: wrap;
     }
+
+    .item-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .item-row .label {
+      color: var(--text);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .stage-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .stage-row .height {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--yellow);
+      min-width: 70px;
+      white-space: nowrap;
+    }
+
+    .stage-row .name {
+      color: var(--text);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .key {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--yellow);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 2px 8px;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .tuna-price {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px 10px;
+      font-size: 15px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    th {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
   </style>
 </head>
 <body>
   <main class="page">
-    <a class="back-link" href="index.html">← Back to Jumpy Cat</a>
+    <a class="back-link" href="index.html">&larr; Back to Jumpy Cat</a>
 
     <div class="logo">
       <img src="logo.png" alt="Jumpy Cat logo" />
     </div>
 
-    <div class="eyebrow">Support</div>
+    <div class="eyebrow">Support &amp; Game Guide</div>
 
+    <!-- SUPPORT -->
     <section class="card">
       <h1>Jumpy Cat Support</h1>
       <p>
-        Need help with Jumpy Cat? This page is here to help with common questions,
-        technical issues, and support requests.
+        Need help with Jumpy Cat? This page covers common issues, game controls,
+        and a full guide to everything in the game.
       </p>
 
       <h2>Contact Support</h2>
@@ -162,6 +256,7 @@
         <li>If the game does not load, check your internet connection and reopen the app.</li>
         <li>If audio is not playing, make sure your device is not muted and the game sound is turned on.</li>
         <li>If gameplay feels unresponsive, fully close and reopen the app.</li>
+        <li>If your score did not save to the leaderboard, make sure you have an internet connection when the run ends.</li>
       </ul>
 
       <h2>Feedback</h2>
@@ -169,14 +264,202 @@
         We welcome feedback on gameplay, controls, difficulty, and overall experience.
         Your input helps improve future updates.
       </p>
+    </section>
 
+    <!-- HOW TO PLAY -->
+    <section class="card">
+      <h2>How to Play</h2>
+      <ul>
+        <li>You're a cat climbing an endless tower of platforms!</li>
+        <li>Jump from platform to platform to climb higher.</li>
+        <li>Collect tuna treats to spend in the Tuna Shop.</li>
+        <li>You have <strong>9 lives</strong> &mdash; lose them all and it's game over.</li>
+        <li>Hold <strong>Pounce</strong> to charge a super jump!</li>
+        <li>Cling to walls and slide down slowly to reposition.</li>
+        <li>Your cat grows up! <strong>Kitten &rarr; Teen (5k m) &rarr; Adult (15k m) &rarr; Senior (30k m)</strong>. Each age has different physics.</li>
+        <li>Land on platforms in quick succession to build <strong>combos</strong> for bonus points!</li>
+      </ul>
+    </section>
+
+    <!-- CONTROLS -->
+    <section class="card">
+      <h2>Controls</h2>
+
+      <h3>Keyboard</h3>
+      <table>
+        <tr><th>Key</th><th>Action</th></tr>
+        <tr><td><span class="key">&larr; &rarr;</span></td><td>Move left / right (or A / D)</td></tr>
+        <tr><td><span class="key">&uarr;</span></td><td>Jump (or W)</td></tr>
+        <tr><td><span class="key">SPACE</span></td><td>Jump (alt)</td></tr>
+        <tr><td><span class="key">Z</span></td><td>Pounce &mdash; hold to charge, release to launch</td></tr>
+      </table>
+
+      <h3>Touch (Mobile)</h3>
+      <ul>
+        <li><strong>Left button</strong> &mdash; Move left</li>
+        <li><strong>Right button</strong> &mdash; Move right</li>
+        <li><strong>Pounce button</strong> &mdash; Hold to charge, release to super-jump</li>
+      </ul>
+    </section>
+
+    <!-- TREATS & SECRET ITEMS -->
+    <section class="card">
+      <h2>Treats</h2>
+      <div class="item-row">
+        <span class="label">Tuna</span> &mdash; Currency. Spend it in the Tuna Shop on costumes!
+      </div>
+      <div class="item-row">
+        <span class="label">Star Treat</span> &mdash; Bonus points and sparkly effects.
+      </div>
+
+      <h2>Secret Items</h2>
+      <div class="item-row">
+        <span class="label">Boba Bubble</span> &mdash; Hidden at secret milestones. Triggers a gravity-free float!
+      </div>
+      <div class="item-row">
+        <span class="label">Cardboard Rocket</span> &mdash; Collect glowing Rocket Stars high up to enter light-speed mode and form constellations!
+      </div>
+    </section>
+
+    <!-- OBSTACLES -->
+    <section class="card">
+      <h2>Obstacles</h2>
+      <div class="item-row">
+        <span class="label">Cactus</span> &mdash; Bounces you back and costs 1 life. Appears after 500 m.
+      </div>
+      <div class="item-row">
+        <span class="label">Dive Bird</span> &mdash; Circles above, then dive-bombs you. Doubles your gravity for 2 s. After 500 m.
+      </div>
+      <div class="item-row">
+        <span class="label">Vacuum Bot</span> &mdash; Patrols back and forth on platforms. Bumps you off if you touch it!
+      </div>
+      <div class="item-row">
+        <span class="label">Laser Pointer</span> &mdash; A red dot that zips across the screen. Hard to resist chasing &mdash; but watch out!
+      </div>
+      <div class="item-row">
+        <span class="label">Spray Bottle</span> &mdash; Falls from above! Cats hate water &mdash; dodge it or lose momentum.
+      </div>
+    </section>
+
+    <!-- BOSSES -->
+    <section class="card">
+      <h2>Bosses</h2>
+      <p>
+        A boss appears every <strong>5,000 m</strong>! Jump on their head to deal damage.
+        Watch for the <strong>"!"</strong> warning before they attack. When their HP gets low,
+        they glow red and speed up &mdash; one last stomp and they're done!
+      </p>
+      <div class="item-row">
+        <span class="label">Mega Vacuum</span> &mdash; A big angry vacuum cleaner! Fires a single aimed projectile. Watch for spinning fan blades.
+      </div>
+      <div class="item-row">
+        <span class="label">Laser King</span> &mdash; Wears a golden crown with glowing gems. Fires 3 bolts in a spread &mdash; dodge through the gaps!
+      </div>
+      <div class="item-row">
+        <span class="label">Spray Lord</span> &mdash; A spray bottle full of water! Fires 3 water droplets in a fan. Cats hate water!
+      </div>
+      <div class="item-row">
+        <span class="label">Bird Queen</span> &mdash; A majestic bird with flapping wings and a tiara. Fires a single homing feather right at you!
+      </div>
+      <div class="item-row">
+        <span class="label">Cactus Titan</span> &mdash; A giant cactus with waving arms and a flower on top. Drops 3 thorns from below &mdash; watch your feet!
+      </div>
+    </section>
+
+    <!-- PLATFORMS -->
+    <section class="card">
+      <h2>Platform Types</h2>
+      <div class="item-row">
+        <span class="label">Standard</span> &mdash; Regular solid platforms. Jump on and keep climbing!
+      </div>
+      <div class="item-row">
+        <span class="label">Moving Platform</span> &mdash; Slides left and right. Time your landing!
+      </div>
+      <div class="item-row">
+        <span class="label">Spring Platform</span> &mdash; Bounces you extra high when you land on it!
+      </div>
+      <div class="item-row">
+        <span class="label">Bouncy Toy</span> &mdash; Trampoline! Launches you sky-high and triggers Ghost Mode &mdash; phase through platforms for 100 m!
+      </div>
+      <div class="item-row">
+        <span class="label">Sinking Pillow</span> &mdash; Soft and cozy, but sinks after 2 seconds. Don't stay too long!
+      </div>
+    </section>
+
+    <!-- COSTUMES -->
+    <section class="card">
+      <h2>Costumes</h2>
+      <p>Buy costumes in the <strong>Tuna Shop</strong> with tuna you collect! Each one gives your cat a unique look.</p>
+      <table>
+        <tr><th>Costume</th><th>Price</th><th>Description</th></tr>
+        <tr><td>Propeller Hat</td><td><span class="tuna-price">25 tuna</span></td><td>Rotates with your speed!</td></tr>
+        <tr><td>Pajama Cat</td><td><span class="tuna-price">40 tuna</span></td><td>Cozy pajamas with stars!</td></tr>
+        <tr><td>Sushi Cat</td><td><span class="tuna-price">50 tuna</span></td><td>Wrapped in nori with rice!</td></tr>
+        <tr><td>Strawberry Cat</td><td><span class="tuna-price">60 tuna</span></td><td>Sweet berry hat &amp; blush!</td></tr>
+        <tr><td>Tuxedo Cat</td><td><span class="tuna-price">75 tuna</span></td><td>Dapper bow tie &amp; top hat!</td></tr>
+        <tr><td>Astronaut Suit</td><td><span class="tuna-price">125 tuna</span></td><td>Low gravity everywhere.</td></tr>
+        <tr><td>80s Aerobics Star</td><td><span class="tuna-price">150 tuna</span></td><td>Sweatband &amp; leg warmers!</td></tr>
+        <tr><td>The Rockstar</td><td><span class="tuna-price">200 tuna</span></td><td>Star shades, keytar &amp; bolt!</td></tr>
+      </table>
+    </section>
+
+    <!-- STAGES / ZONES -->
+    <section class="card">
+      <h2>Zones</h2>
+      <p>The game has <strong>10 themed zones</strong>. Each zone changes the visuals, music, and difficulty as you climb higher.</p>
+
+      <div class="stage-row">
+        <span class="height">0 m</span>
+        <span class="name">Cozy Home</span> &mdash; Warm and easy. Wide platforms, learn the basics. Cat starts as a Kitten.
+      </div>
+      <div class="stage-row">
+        <span class="height">5,000 m</span>
+        <span class="name">Frosty Zone</span> &mdash; Icy platforms! Slippery surfaces, narrower gaps. Your cat becomes a Teen! First boss appears.
+      </div>
+      <div class="stage-row">
+        <span class="height">10,000 m</span>
+        <span class="name">Neon City</span> &mdash; Glowing cyberpunk platforms, faster pace, neon everything.
+      </div>
+      <div class="stage-row">
+        <span class="height">15,000 m</span>
+        <span class="name">Fog City</span> &mdash; Your cat becomes an Adult! Foggy stage &mdash; platforms only appear when you're close!
+      </div>
+      <div class="stage-row">
+        <span class="height">20,000 m</span>
+        <span class="name">Cloud Kingdom</span> &mdash; Cute fluffy cloud platforms that bounce you gently. Soft, airy, and dreamy.
+      </div>
+      <div class="stage-row">
+        <span class="height">25,000 m</span>
+        <span class="name">Volcanic Peaks</span> &mdash; Fiery lava platforms and rising embers. Move fast!
+      </div>
+      <div class="stage-row">
+        <span class="height">30,000 m</span>
+        <span class="name">Candy Land</span> &mdash; Your cat becomes a Senior! Heavier with more gravity. Sweet pastel candy platforms.
+      </div>
+      <div class="stage-row">
+        <span class="height">35,000 m</span>
+        <span class="name">Aurora Borealis</span> &mdash; Shimmering northern lights and crystal platforms. Ethereal and beautiful.
+      </div>
+      <div class="stage-row">
+        <span class="height">40,000 m</span>
+        <span class="name">Deep Space</span> &mdash; Zero-gravity vibes. Floating platforms, the ultimate challenge. Rocket Stars appear!
+      </div>
+      <div class="stage-row">
+        <span class="height">100,000 m</span>
+        <span class="name">Enlightenment</span> &mdash; The cat transcends. A beautiful ending awaits &mdash; then enter peaceful Zen Mode.
+      </div>
+    </section>
+
+    <!-- APP INFO & LINKS -->
+    <section class="card">
       <h2>App Information</h2>
       <p>
-        Jumpy Cat is a casual endless jumping game designed for quick, fun mobile play.
+        Jumpy Cat is an endless vertical climbing game with 10 zones, 5 bosses, and a whole lot of tuna.
       </p>
 
       <div class="links">
-        <a href="index.html">Marketing Page</a>
+        <a href="index.html">Home</a>
+        <a href="https://apps.apple.com/us/app/jumpy-cat-endless-jump/id6760763011" target="_blank">App Store</a>
         <a href="https://theressaasis.github.io/jumpycat-endlessjump-privacy/" target="_blank">Privacy Policy</a>
       </div>
 
