@@ -248,6 +248,94 @@
       gap: 14px;
     }
 
+    .phone-screen {
+      position: relative;
+    }
+
+    .carousel {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.35s ease;
+    }
+
+    .carousel-track .game-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.18s ease, background 0.18s ease;
+      z-index: 2;
+      padding: 0;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .carousel-btn.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .carousel-prev {
+      left: 8px;
+    }
+
+    .carousel-next {
+      right: 8px;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .carousel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+
+    .carousel-dot.active {
+      background: #fff;
+      transform: scale(1.25);
+    }
+
     @media (max-width: 920px) {
       .hero {
         grid-template-columns: 1fr;
@@ -307,7 +395,18 @@
 
       <div class="phone-shell">
         <div class="phone-screen">
-          <img src="screenshot.png" alt="Jumpy Cat gameplay screenshot" class="game-image" />
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="screenshot.png" alt="Jumpy Cat gameplay screenshot" class="game-image" />
+              <!-- Add more screenshots here:
+              <img src="screenshot2.png" alt="Jumpy Cat screenshot 2" class="game-image" />
+              <img src="screenshot3.png" alt="Jumpy Cat screenshot 3" class="game-image" />
+              -->
+            </div>
+          </div>
+          <button class="carousel-btn carousel-prev" aria-label="Previous screenshot">&lsaquo;</button>
+          <button class="carousel-btn carousel-next" aria-label="Next screenshot">&rsaquo;</button>
+          <div class="carousel-dots"></div>
         </div>
       </div>
     </section>
@@ -356,5 +455,59 @@
       </div>
     </footer>
   </main>
+  <script>
+    (function () {
+      const track = document.querySelector('.carousel-track');
+      const images = track.querySelectorAll('.game-image');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+      const dotsContainer = document.querySelector('.carousel-dots');
+      let current = 0;
+      const total = images.length;
+
+      // Build dots
+      images.forEach(function (_, i) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to screenshot ' + (i + 1));
+        dot.addEventListener('click', function () { goTo(i); });
+        dotsContainer.appendChild(dot);
+      });
+
+      // Hide controls if only one image
+      if (total <= 1) {
+        prevBtn.classList.add('hidden');
+        nextBtn.classList.add('hidden');
+        dotsContainer.style.display = 'none';
+      }
+
+      function goTo(index) {
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        document.querySelectorAll('.carousel-dot').forEach(function (d, i) {
+          d.classList.toggle('active', i === current);
+        });
+        prevBtn.classList.toggle('hidden', current === 0);
+        nextBtn.classList.toggle('hidden', current === total - 1);
+      }
+
+      prevBtn.addEventListener('click', function () { if (current > 0) goTo(current - 1); });
+      nextBtn.addEventListener('click', function () { if (current < total - 1) goTo(current + 1); });
+
+      // Touch swipe support
+      var startX = 0;
+      var dragging = false;
+      track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; dragging = true; });
+      track.addEventListener('touchend', function (e) {
+        if (!dragging) return;
+        dragging = false;
+        var diff = startX - e.changedTouches[0].clientX;
+        if (diff > 40 && current < total - 1) goTo(current + 1);
+        else if (diff < -40 && current > 0) goTo(current - 1);
+      });
+
+      goTo(0);
+    })();
+  </script>
 </body>
 </html>
