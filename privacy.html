@@ -1,70 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jumpy Cat — Privacy Policy</title>
+  <meta
+    name="description"
+    content="Privacy Policy for Jumpy Cat: Endless Jump — what data we collect and how it is used."
+  />
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      background: #1e1c2a;
-      color: #d4d0e8;
-      line-height: 1.7;
+    :root {
+      --bg: #252342;
+      --bg-2: #2d2950;
+      --card: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f7f1ff;
+      --muted: #c8bfdc;
+      --pink: #ff78c8;
+      --yellow: #f6e27a;
+      --max: 900px;
     }
-    h1 { color: #e6a0be; font-size: 1.6em; }
-    h2 { color: #a0d7c8; font-size: 1.15em; margin-top: 2em; }
-    p, li { font-size: 0.95em; }
-    a { color: #a0b8e6; }
-    .updated { font-size: 0.8em; opacity: 0.6; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top center, rgba(80, 70, 140, 0.35), transparent 35%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--yellow);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin: 28px 0 10px;
+      font-size: 22px;
+      color: var(--pink);
+    }
+
+    h2:first-child {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    ul {
+      margin: 0 0 14px 20px;
+      color: var(--muted);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--yellow);
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .links {
+      margin-top: 18px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
-  <h1>Jumpy Cat — Privacy Policy</h1>
-  <p class="updated">Last updated: March 26, 2026</p>
+  <main class="page">
+    <a class="back-link" href="marketing.html">&larr; Back to Jumpy Cat</a>
 
-  <h2>Overview</h2>
-  <p>Jumpy Cat ("the App") is a casual mobile game developed by Theressa Asis | TA Studio. We respect your privacy and are committed to being transparent about the limited data we collect.</p>
+    <div class="eyebrow">Privacy Policy</div>
 
-  <h2>Data We Collect</h2>
-  <p>The App collects the following data solely for gameplay functionality:</p>
-  <ul>
-    <li><strong>Game Center Display Name</strong> — Used to identify you on the leaderboard. This is provided by Apple Game Center and is not collected by us directly.</li>
-    <li><strong>Game Center Player ID</strong> — Used to associate your scores with your account.</li>
-    <li><strong>High Scores</strong> — Your scores are submitted to our leaderboard so you can compete with other players.</li>
-    <li><strong>Player Name (optional)</strong> — If you enter a name for the leaderboard, it is stored alongside your score.</li>
-  </ul>
+    <section class="card">
+      <h1>Jumpy Cat — Privacy Policy</h1>
+      <p>Last updated: March 26, 2026</p>
 
-  <h2>Data We Do Not Collect</h2>
-  <ul>
-    <li>We do not collect your email, phone number, location, or device identifiers.</li>
-    <li>We do not use analytics, advertising, or tracking SDKs.</li>
-    <li>We do not sell, share, or rent your data to any third party.</li>
-  </ul>
+      <h2>Overview</h2>
+      <p>Jumpy Cat ("the App") is a casual mobile game developed by Theressa Asis | TA Studio. We respect your privacy and are committed to being transparent about the limited data we collect.</p>
 
-  <h2>Third-Party Services</h2>
-  <ul>
-    <li><strong>Apple Game Center</strong> — Used for authentication and leaderboards. Governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</li>
-    <li><strong>Google Firebase (Firestore)</strong> — Used to store leaderboard scores. Governed by <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.</li>
-    <li><strong>Apple StoreKit</strong> — Used for in-app purchases. All payment processing is handled entirely by Apple. We do not receive or store any payment information.</li>
-  </ul>
+      <h2>Data We Collect</h2>
+      <p>The App collects the following data solely for gameplay functionality:</p>
+      <ul>
+        <li><strong>Game Center Display Name</strong> — Used to identify you on the leaderboard. This is provided by Apple Game Center and is not collected by us directly.</li>
+        <li><strong>Game Center Player ID</strong> — Used to associate your scores with your account.</li>
+        <li><strong>High Scores</strong> — Your scores are submitted to our leaderboard so you can compete with other players.</li>
+        <li><strong>Player Name (optional)</strong> — If you enter a name for the leaderboard, it is stored alongside your score.</li>
+      </ul>
 
-  <h2>In-App Purchases</h2>
-  <p>The App offers optional in-app purchases (tuna packs and the Double Tuna upgrade). All transactions are processed by Apple. We do not have access to your payment details, credit card information, or Apple ID.</p>
+      <h2>Data We Do Not Collect</h2>
+      <ul>
+        <li>We do not collect your email, phone number, location, or device identifiers.</li>
+        <li>We do not use analytics, advertising, or tracking SDKs.</li>
+        <li>We do not sell, share, or rent your data to any third party.</li>
+      </ul>
 
-  <h2>Children's Privacy</h2>
-  <p>The App does not knowingly collect personal information from children under 13. The only data collected (Game Center name and scores) is managed through Apple's parental controls.</p>
+      <h2>Third-Party Services</h2>
+      <ul>
+        <li><strong>Apple Game Center</strong> — Used for authentication and leaderboards. Governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</li>
+        <li><strong>Google Firebase (Firestore)</strong> — Used to store leaderboard scores. Governed by <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.</li>
+        <li><strong>Apple StoreKit</strong> — Used for in-app purchases. All payment processing is handled entirely by Apple. We do not receive or store any payment information.</li>
+      </ul>
 
-  <h2>Data Retention</h2>
-  <p>Leaderboard data is retained on our servers. Weekly leaderboards are reset automatically. You can request deletion of your data by contacting us.</p>
+      <h2>In-App Purchases</h2>
+      <p>The App offers optional in-app purchases (tuna packs and the Double Tuna upgrade). All transactions are processed by Apple. We do not have access to your payment details, credit card information, or Apple ID.</p>
 
-  <h2>Changes to This Policy</h2>
-  <p>We may update this policy from time to time. Changes will be reflected on this page with an updated date.</p>
+      <h2>Children's Privacy</h2>
+      <p>The App does not knowingly collect personal information from children under 13. The only data collected (Game Center name and scores) is managed through Apple's parental controls.</p>
 
-  <h2>Contact</h2>
-  <p>If you have questions about this privacy policy, contact us at:<br>
-  <a href="mailto:hello@theressaasis.com">hello@theressaasis.com</a></p>
+      <h2>Data Retention</h2>
+      <p>Leaderboard data is retained on our servers. Weekly leaderboards are reset automatically. You can request deletion of your data by contacting us.</p>
+
+      <h2>Changes to This Policy</h2>
+      <p>We may update this policy from time to time. Changes will be reflected on this page with an updated date.</p>
+
+      <h2>Contact</h2>
+      <p>If you have questions about this privacy policy, contact us at:<br>
+      <a href="mailto:hello@theressaasis.com">hello@theressaasis.com</a></p>
+
+      <div class="links">
+        <a href="marketing.html">Home</a>
+        <a href="support.html">Support</a>
+        <a href="https://apps.apple.com/app/jumpy-cat-endless-jump/id6746264027" target="_blank">App Store</a>
+      </div>
+
+      <div class="footer">
+        Last updated: March 2026
+      </div>
+    </section>
+  </main>
 </body>
 </html>
